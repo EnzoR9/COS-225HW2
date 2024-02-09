@@ -2,22 +2,53 @@ import java.util.ArrayList;
 
 public class Grove 
 {
-    //Contains two instance variables for an Array of Tree's (size 12), and a grove name.
-    //You may use an ArrayList of Tree's if you wish
+    // instance variables for an Array of Tree's (size 12), and grove name
     public String groveName;
-    ArrayList<String>Trees;
+    ArrayList<Tree>Trees;
     
 
-    //◦ Implements a parameterized constructor that takes (and sets) a single parameter for the name of the grove
+    // parameterized constructor
     public Grove(String groveName)
     {
         this.groveName = groveName;
-        this.Trees = new ArrayList<String>();
+        this.Trees = new ArrayList<Tree>();
     }
     
-        //◦ Implements a method that will plant a Tree object in the first available spot. 
-        // The method should take a Tree object as a parameter, and return an int identifying the spot where the tree is planted. If no spots are open, return -1.
-        //◦ Implements a method that will remove a Tree object from a given spot.
-        // The method should take an int as a parameter, and remove and return the Tree object at that location in the array.
-        //◦ Implement a ToString() method that will print a single int representing the number of Tree's in the array
+    
+     
+    // plants a Tree object in the first available spot. 
+    public int treePlanter(Tree t)
+    {
+        if (Trees.size() < 12)
+        {
+            Trees.add(t);
+            return Trees.size() - 1; // returning where the tree is planted
+        }
+        else // no spots 
+        {
+            return -1; 
+        }
+        
+    }
+
+    // removes a Tree object from a given spot.
+    public Tree treeRemover(int treeIndex)
+    {
+        if (treeIndex >= 0 && treeIndex < Trees.size())
+        {
+            return Trees.remove(treeIndex);
+        }
+        else 
+        {
+            return null; // returning nothing if the tree index is invalid
+        }
+        
+    }
+    
+    // ToString() that prints the number of Tree's in the array
+    public String toString() 
+    {
+        return String.valueOf(Trees.size());
+    }
+        
 }
